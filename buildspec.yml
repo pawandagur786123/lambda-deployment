@@ -5,6 +5,7 @@ phases:
     runtime-versions:
       nodejs: 18
 
+  phases:
   build:
     commands:
       - echo "Installing dependencies..."
@@ -13,7 +14,10 @@ phases:
       - cp index.js package/
       - cp -r node_modules package/ || true
       - cd package
+      - ls -la  
       - zip -r ../function.zip .
+      - cd ..
+      - unzip -l function.zip  
 
 artifacts:
   files:
