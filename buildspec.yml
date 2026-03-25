@@ -7,12 +7,16 @@ phases:
 
   build:
     commands:
-      - echo "Zipping lambda..."
-      - zip -r function.zip index.js
+      - echo "Installing dependencies..."
+      - npm install
+      - mkdir package
+      - cp index.js package/
+      - cp -r node_modules package/ || true
+      - cd package
+      - zip -r ../function.zip .
 
 artifacts:
   files:
     - function.zip
-
 
     
